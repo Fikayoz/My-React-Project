@@ -1,0 +1,40 @@
+<!-- This is a test index for storing persistent data -->
+
+<!DOCTYPE html>
+<html>
+		<head>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<p>Content goes here</p>
+		<input type="text" id="userInput"> Give me input </input>
+		<button onclick="appendToList()">Add to List</button>
+		<button onclick="display()">Show List</button>
+		<script>
+			var to_do = [];
+			function appendToList()
+			{
+				var userInput = document.getElementById("userInput").value;
+				to_do[to_do.length] = userInput;
+			}
+			function printConfirm()
+			{
+			}
+			function display()
+			{
+				var list = "";
+				for(i=0;i < to_do.length; i++)
+				{
+					list += to_do[i] + "<br>";
+				}
+				document.getElementById("myList").innerHTML = list;
+			}
+			function removeElement()
+			{
+				
+			}
+		</script>
+	<p> A list should appear here after pressing show List (If you've added items to it)</p>
+	<p id="myList"></p>
+	</body>
+</html>
