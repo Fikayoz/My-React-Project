@@ -1,0 +1,6 @@
+Task: Test over-writing an innerHTML to not have to deal with deleting
+
+
+Idea1: Overwrite innerHTML elements
+Idea2: Delete/Remove HTML Elements
+Idea3: Avoid Using HTML Elements and resolve with plain Text
