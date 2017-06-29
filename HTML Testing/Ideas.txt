@@ -1,4 +1,5 @@
 Task: Test over-writing an innerHTML to not have to deal with deleting
+Task: Experiment with removing individual HTML elements
 
 
 Idea1: Overwrite innerHTML elements
