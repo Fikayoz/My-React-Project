@@ -11,21 +11,23 @@
 		<button onclick="makeButton()">Make A Button</button>
 		<script>
 			var to_do = [];
+			var to_do_display = [];
 			function makeButton()
 			{
 				var button = document.createElement("BUTTON");
-                var buttonText = "Button #" + to_do.length;
+                var buttonText = document.createTextNode("Button #" + to_do.length);
                 button.appendChild(buttonText);
 				to_do[to_do.length] = button;
                 display();
 			}
-			function display()
+			function display() //Display the buttons as they are made
 			{
-				var list = "";
+				//var list = "";
 				for(i=0;i < to_do.length; i++)
 				{
-					
-					list += to_do[i] + "<br>";
+					var lineElement = document.createElement("P");
+					lineElement.appendChild(to_do[i]); // The point of this is to make the buttons appear vertically
+					document.body.appendChild(lineElement);
 				}
 				document.getElementById("myList").innerHTML = list;
 			}
