@@ -19,19 +19,18 @@
 				to_do[to_do.length] = button;
                 display();
 			}
-
 			function display()
 			{
 				var list = "";
 				for(i=0;i < to_do.length; i++)
 				{
+					
 					list += to_do[i] + "<br>";
 				}
 				document.getElementById("myList").innerHTML = list;
 			}
 			function removeElement()
 			{
-				
 			}
 		</script>
 	<p> A list should appear here after pressing show List (If you've added items to it)</p>
