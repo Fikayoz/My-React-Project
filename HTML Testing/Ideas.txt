@@ -5,3 +5,7 @@ Task: Experiment with removing individual HTML elements
 Idea1: Overwrite innerHTML elements
 Idea2: Delete/Remove HTML Elements
 Idea3: Avoid Using HTML Elements and resolve with plain Text
+	3-0: Create buttons with a button
+	3-1: Create buttons and delete buttons with a button
+	3-2: Add an event to newly created buttons
+	3-3: Add delete events to newly created buttons
