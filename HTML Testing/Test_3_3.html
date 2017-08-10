@@ -1,0 +1,57 @@
+<!-- This is a test for adding delete events to buttons dynamically -->
+
+<!DOCTYPE html>
+<html>
+		<head>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<p>Content goes here</p>
+		<input type="text" id="userInput"> This does nothing </input>
+		<button onclick="makeButton()">Make A Button</button>
+		<button onclick="clearButtons()">Delete Buttons</button>
+		<script>
+			var to_do = [];
+			var to_do_display = [];
+			function makeButton()
+			{
+				var index = to_do.length;
+				var button = document.createElement("BUTTON");
+                button.innerHTML = "Button #" + to_do.length;
+				button.id = "Button #" + to_do.length;
+				button.onclick = function()
+				{
+					alert("Deleting element");
+					to_do[index].parentNode.removeChild(to_do[index]);
+					to_do.splice(index, 1);
+					display();
+				};
+				to_do[to_do.length] = button;
+                display();
+			}
+			function display() //Display the buttons as they are made
+			{
+				for(i=0;i < to_do.length; i++)
+				{
+					var lineElement = document.createElement("P");
+					lineElement.appendChild(to_do[i]);
+					document.body.appendChild(lineElement);
+				}
+			}
+			function clearButtons()
+			{
+				for(i=0;i < to_do.length; i++)
+				{
+					to_do[i].parentNode.removeChild(to_do[i]);
+				}
+				to_do = [];
+			}
+			function randomAlert()
+			{
+				window.alert("It's effective!");
+			}
+		</script>
+	<p> A list should appear here after pressing show List (If you've added items to it)</p>
+	<p id="myList"></p>
+	</body>
+</html>
