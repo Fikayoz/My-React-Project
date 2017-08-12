@@ -1,32 +1,41 @@
+<!-- This is a test index for adding elements to a list in Plain HTML/Javascript -->
+
 <!DOCTYPE html>
-
 <html>
-
-	<head>
+		<head>
 		<meta charset="UTF-8">
 	</head>
 	<body>
-		<input type="button" id="btnAdd" value="Add Text Field">
-		<p id="fooBar">Fields:</p>
+		<p>Content goes here</p>
+		<input type="text" id="userInput"> Give me input </input>
+		<button onclick="appendToList()">Add to List</button>
+		<button onclick="display()">Show List</button>
 		<script>
-			function add(type) {
-			  //Create an input type dynamically.   
-			  var element = document.createElement("input");
-			  //Assign different attributes to the element. 
-			  element.type = type;
-			  element.value = type; // Really? You want the default value to be the type string?
-			  element.name = type; // And the name too?
-			  element.onclick = function() { // Note this is a function
-				alert("blabla");
-			  };
-
-			  var foo = document.getElementById("fooBar");
-			  //Append the element in page (in span).  
-			  foo.appendChild(element);
+			var to_do = [];
+			function appendToList()
+			{
+				var userInput = document.getElementById("userInput");
+				to_do[to_do.length] = userInput.value;
+				userInput.value = ""
 			}
-			document.getElementById("btnAdd").onclick = function() {
-			  add("text");
-			};
+			function printConfirm()
+			{
+			}
+			function display()
+			{
+				var list = "";
+				for(i=0;i < to_do.length; i++)
+				{
+					list += to_do[i] + "<br>";
+				}
+				document.getElementById("myList").innerHTML = list;
+			}
+			function removeElement()
+			{
+				
+			}
 		</script>
+	<p> A list should appear here after pressing show List (If you've added items to it)</p>
+	<p id="myList"></p>
 	</body>
 </html>

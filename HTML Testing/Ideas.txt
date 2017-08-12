@@ -12,3 +12,5 @@ Idea3: Avoid Using HTML Elements and resolve with plain Text
 	3-3: Add delete events to newly created buttons				[Incomplete]
 	
 Idea4: Construct to-do list without dates
+
+Idea5: Construct to-do list without dates but with memory
