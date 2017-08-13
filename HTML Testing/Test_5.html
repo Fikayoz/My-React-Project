@@ -1,0 +1,100 @@
+<!-- This is a test for a prototype of the to-do list app WITH memory storage -->
+
+<!DOCTYPE html>
+<html>
+		<head>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<p>Content goes here</p>
+		<input type="text" id="userInput"> Give me input </input>
+		<button onclick="makeEntry()">Save to to-do list</button>
+		<button onclick="display()">Show list</button>
+		<button onclick="clearButtons()">Empty to-do list</button>
+		<script>
+			var to_do = [];
+			memoryUpdate();
+			function makeEntry()
+			{
+				var element = document.createElement("DIV");
+				
+				var userInput = document.getElementById("userInput");
+				var text = document.createElement("DIV");
+				text.innerHTML = userInput.value
+				localStorage.setItem(to_do.length.toString(), userInput.value)
+				text.style = "float:left; width:400px" //margin-right:10px; (Use this to space based on text)
+				userInput.value = "";
+				
+				var index = to_do.length;
+				var button = document.createElement("BUTTON");
+                button.innerHTML = "Delete entry";
+				button.id = "Button #" + to_do.length;
+				button.onclick = function()
+				{
+					alert("Deleting element");
+					button.parentNode.removeChild(button);
+					text.parentNode.removeChild(text);
+					localStorage.removeItem(index.toString());
+					to_do.splice(index, 1);
+					display();
+				};
+				
+				element.appendChild(text);
+				element.appendChild(button);
+				to_do[to_do.length] = element;
+                display();
+			}
+			function display() //Display the buttons as they are made
+			{
+				for(i=0;i < to_do.length; i++)
+				{
+					var lineElement = document.createElement("P");
+					lineElement.appendChild(to_do[i]);
+					document.body.appendChild(lineElement);
+				}
+			}
+			function clearButtons()
+			{
+				for(i=0;i < to_do.length; i++)
+				{
+					to_do[i].parentNode.removeChild(to_do[i]);
+				}
+				to_do = [];
+				localStorage.clear();
+			}
+			
+			function memoryUpdate()
+			{
+				for(i=0;i < localStorage.length; i++)
+				{
+					var n = i.toString();
+					var element = document.createElement("DIV");
+					
+					var text = document.createElement("DIV");
+					text.innerHTML = localStorage.getItem(n);
+					text.style = "float:left; width:400px"; //margin-right:10px; (Use this to space based on text)
+					
+					var index = to_do.length;
+					var button = document.createElement("BUTTON");
+					button.innerHTML = "Delete entry";
+					button.id = "Button #" + to_do.length;
+					button.onclick = function()
+					{
+						alert("Deleting element");
+						button.parentNode.removeChild(button);
+						text.parentNode.removeChild(text);
+						localStorage.removeItem(index.toString());
+						to_do.splice(index, 1);
+						display();
+					};
+					
+					element.appendChild(text);
+					element.appendChild(button);
+					to_do[to_do.length] = element;
+				}
+			}
+		</script>
+	<p> A list should appear here after pressing show List (If you've added items to it)</p>
+	<p id="myList"></p>
+	</body>
+</html>

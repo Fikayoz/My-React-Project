@@ -12,14 +12,13 @@
 		<button onclick="display()">Show List</button>
 		<script>
 			var to_do = [];
+			localStorage.setItem("Jeff","Stuff");
 			function appendToList()
 			{
 				var userInput = document.getElementById("userInput");
 				to_do[to_do.length] = userInput.value;
 				userInput.value = ""
-			}
-			function printConfirm()
-			{
+				userInput.innerHTML = localStorage.length
 			}
 			function display()
 			{
@@ -28,11 +27,9 @@
 				{
 					list += to_do[i] + "<br>";
 				}
-				document.getElementById("myList").innerHTML = list;
-			}
-			function removeElement()
-			{
-				
+				for (var i = 0; i < localStorage.length; i++){
+					// do something with localStorage.getItem(localStorage.key(i));
+				}
 			}
 		</script>
 	<p> A list should appear here after pressing show List (If you've added items to it)</p>
