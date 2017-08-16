@@ -1,4 +1,5 @@
 <!-- This is a test for a prototype of the to-do list app WITH memory storage -->
+<!-- Current issues: button.parentNode is null for some reason; index is not updating to current value -->
 
 <!DOCTYPE html>
 <html>
@@ -14,14 +15,15 @@
 		<script>
 			var to_do = [];
 			memoryUpdate();
+			show();
 			function makeEntry()
 			{
 				var element = document.createElement("DIV");
 				
 				var userInput = document.getElementById("userInput");
 				var text = document.createElement("DIV");
-				text.innerHTML = userInput.value
-				localStorage.setItem(to_do.length.toString(), userInput.value)
+				text.innerHTML = userInput.value;
+				localStorage.setItem(to_do.length.toString(), userInput.value);
 				text.style = "float:left; width:400px" //margin-right:10px; (Use this to space based on text)
 				userInput.value = "";
 				
@@ -34,7 +36,9 @@
 					alert("Deleting element");
 					button.parentNode.removeChild(button);
 					text.parentNode.removeChild(text);
-					localStorage.removeItem(index.toString());
+					//localStorage.removeItem(index.toString());
+					console.log("Attempting to erase item in key: " + index.toString());
+					localSplice(index.toString());
 					to_do.splice(index, 1);
 					display();
 				};
@@ -83,7 +87,9 @@
 						alert("Deleting element");
 						button.parentNode.removeChild(button);
 						text.parentNode.removeChild(text);
-						localStorage.removeItem(index.toString());
+						//localStorage.removeItem(index.toString());
+						console.log("Attempting to erase item in key: " + index.toString());
+						localSplice(index.toString());
 						to_do.splice(index, 1);
 						display();
 					};
@@ -92,6 +98,26 @@
 					element.appendChild(button);
 					to_do[to_do.length] = element;
 				}
+			}
+			function localSplice(stringIndex)
+			{
+				num = parseInt(stringIndex);
+				for(i=num;i < (to_do.length-1); i++)
+				{
+					value = localStorage.getItem((i+1).toString());
+					localStorage.setItem(i.toString(), value);
+				}
+				console.log(i);
+				console.log(localStorage.removeItem(i.toString()));
+				show();
+			}
+			function show()
+			{
+				for(var i in localStorage)
+					{
+						console.log("Key: " + i + "  Value: " + localStorage[i]);
+					}
+				//console.log(localStorage.length.toString());
 			}
 		</script>
 	<p> A list should appear here after pressing show List (If you've added items to it)</p>
